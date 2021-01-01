@@ -19,7 +19,7 @@ import ReactGlobe from './react-globe';
     const [event, setEvent] = useState();
     const [details, setDetails] = useState();
 
-    function onClickMarker(marker, markerObject, event) {
+    function onClickMarker(marker, markerObject, event, {_tooltip, _options}) {
       setEvent({
         type: 'CLICK',
         marker,
@@ -29,7 +29,7 @@ import ReactGlobe from './react-globe';
       setDetails(`City: ${marker.city} (Sales: ${marker.value}.0M)`);
     }
 
-    function onTouchMarker(marker, markerObject, event) {
+    function onTouchMarker(marker, markerObject, event, {_tooltip, _options}) {
       setEvent({
         type: 'TOUCHSTART',
         marker,
@@ -47,7 +47,7 @@ import ReactGlobe from './react-globe';
       setDetails();
     }
 
-    function onMouseOutMarker(previousMarker, markerObject, event) {
+    function onMouseOutMarker(previousMarker, markerObject, event, {_tooltip, _options}) {
       setEvent({
         type: 'MOUSEOUT',
         previousMarker,
@@ -56,7 +56,7 @@ import ReactGlobe from './react-globe';
       });
     }
 
-    function onMouseOverMarker(marker, markerObject, event) {
+    function onMouseOverMarker(marker, markerObject, event, {_tooltip, _options}) {
       setEvent({
         type: 'MOUSEOVER',
         marker,

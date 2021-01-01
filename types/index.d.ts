@@ -1,4 +1,5 @@
 import { Object3D } from 'three';
+import Tooltip from '../lib/tooltip';
 
 /**
  * Types
@@ -93,6 +94,7 @@ export type MarkerCallback = (
   marker: Marker,
   markerObject: Object3D,
   event: PointerEvent,
+  params: { tooltip: Tooltip; options: Options },
 ) => void;
 
 export type MinMaxPair = [number, number];
