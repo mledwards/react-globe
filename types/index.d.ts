@@ -95,13 +95,13 @@ export interface Marker {
 
 export type CallbackParameters = {
   tooltip: Tooltip;
-  options: Options;
+  options: Optional<Options>;
   updateFocus: Globe['updateFocus'];
 };
 
 export type MarkerCallback = (
   marker: Marker,
-  markerObject: Object3D,
+  markerObject: Record<string, any>,
   event: PointerEvent,
   params: CallbackParameters,
 ) => void;
