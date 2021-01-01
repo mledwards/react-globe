@@ -96,6 +96,7 @@ export interface Marker {
 export type CallbackParameters = {
   tooltip: Tooltip;
   options: Options;
+  updateFocus: Globe['updateFocus'];
 };
 
 export type MarkerCallback = (

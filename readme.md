@@ -120,12 +120,12 @@ function MyGlobe() {
       markers={markers}
       options={options}
       width="100%"
-      onClickMarker={(marker, markerObject, event, {tooltip, options}) => console.log(marker, markerObject, event, tooltip, options)}
-      onTouchMarker={(marker, markerObject, event, {tooltip, options}) => console.log(marker, markerObject, event, tooltip, options)}
+      onClickMarker={(marker, markerObject, event, {tooltip, options, updateFocus}) => console.log(marker, markerObject, event, tooltip, options)}
+      onTouchMarker={(marker, markerObject, event, {tooltip, options, updateFocus}) => console.log(marker, markerObject, event, tooltip, options)}
       onGetGlobe={setGlobe}
-      onMouseOutMarker={(marker, markerObject, event, {tooltip, options}) => console.log(marker, markerObject, event)}
+      onMouseOutMarker={(marker, markerObject, event, {tooltip, options, updateFocus}) => console.log(marker, markerObject, event)}
       onGlobeTextureLoaded={() => console.log('globe loaded')}
-      onMouseOverMarker={(marker, markerObject, event, {tooltip, options}) => console.log(marker, markerObject, event, tooltip, options)}
+      onMouseOverMarker={(marker, markerObject, event, {tooltip, options, updateFocus}) => console.log(marker, markerObject, event, tooltip, options)}
     />
   )
 }
