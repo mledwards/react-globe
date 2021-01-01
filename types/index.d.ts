@@ -93,7 +93,6 @@ export type MarkerCallback = (
   marker: Marker,
   markerObject: Object3D,
   event: PointerEvent,
-  globe: Globe,
 ) => void;
 
 export type MinMaxPair = [number, number];
