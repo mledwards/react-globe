@@ -19,7 +19,7 @@ import ReactGlobe from './react-globe';
     const [event, setEvent] = useState();
     const [details, setDetails] = useState();
 
-    function onClickMarker(marker, markerObject, event, _parameters) {
+    function onClickMarker(marker, markerObject, event, globe) {
       setEvent({
         type: 'CLICK',
         marker,
@@ -29,7 +29,7 @@ import ReactGlobe from './react-globe';
       setDetails(`City: ${marker.city} (Sales: ${marker.value}.0M)`);
     }
 
-    function onTouchMarker(marker, markerObject, event, _parameters) {
+    function onTouchMarker(marker, markerObject, event, globe) {
       setEvent({
         type: 'TOUCHSTART',
         marker,
@@ -39,7 +39,7 @@ import ReactGlobe from './react-globe';
       setDetails(`City: ${marker.city} (Sales: ${marker.value}.0M)`);
     }
 
-    function onDefocus(previousCoordinates, _parameters) {
+    function onDefocus(previousCoordinates, globe) {
       setEvent({
         type: 'DEFOCUS',
         previousCoordinates,
@@ -47,7 +47,7 @@ import ReactGlobe from './react-globe';
       setDetails();
     }
 
-    function onMouseOutMarker(previousMarker, markerObject, event, _parameters) {
+    function onMouseOutMarker(previousMarker, markerObject, event, globe) {
       setEvent({
         type: 'MOUSEOUT',
         previousMarker,
@@ -56,7 +56,7 @@ import ReactGlobe from './react-globe';
       });
     }
 
-    function onMouseOverMarker(marker, markerObject, event, _parameters) {
+    function onMouseOverMarker(marker, markerObject, event, globe) {
       setEvent({
         type: 'MOUSEOVER',
         marker,
