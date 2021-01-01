@@ -17,7 +17,7 @@ export interface Animation {
 export interface Callbacks {
   onClickMarker: MarkerCallback;
   onTouchMarker: MarkerCallback;
-  onDefocus: (previousFocus: Coordinates | null, globe: Globe) => void;
+  onDefocus: (previousFocus: Coordinates | null) => void;
   onGlobeBackgroundTextureLoaded: () => void;
   onGlobeCloudsTextureLoaded: () => void;
   onGlobeTextureLoaded: () => void;
@@ -215,7 +215,7 @@ export interface Props {
   /** Callback to handle touch events of a marker.  Captures the touched marker, ThreeJS object and pointer event. */
   onTouchMarker?: MarkerCallback;
   /** Callback to handle defocus events (i.e. clicking the globe after a focus has been applied).  Captures the previously focused coordinates. */
-  onDefocus?: (previousFocus: Coordinates, globe: Globe) => void;
+  onDefocus?: (previousFocus: Coordinates) => void;
   /** Capture the initialized globe instance */
   onGetGlobe?: (globe: Globe) => void;
   /** Callback when globe background texture is successfully loaded. */
