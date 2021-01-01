@@ -9,7 +9,7 @@ Small enhancement.
 | added | | `onTouchMarker` |
 
 - Make tippy custom theme available by setting up a theme called "custom"
-- Make globe accessible in callbacks
+- Make callbacks fully customizable
 
 ## [5.0.2](https://github.com/chrisrzhou/react-globe/compare/v5.0.2...v5.0.1) (2020-08-08)
 
