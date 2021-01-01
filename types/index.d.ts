@@ -18,7 +18,10 @@ export interface Animation {
 export interface Callbacks {
   onClickMarker: MarkerCallback;
   onTouchMarker: MarkerCallback;
-  onDefocus: (previousFocus: Coordinates | null) => void;
+  onDefocus: (
+    previousFocus: Coordinates | null,
+    parameters: CallbackParameters,
+  ) => void;
   onGlobeBackgroundTextureLoaded: () => void;
   onGlobeCloudsTextureLoaded: () => void;
   onGlobeTextureLoaded: () => void;
@@ -90,11 +93,16 @@ export interface Marker {
   color?: string;
 }
 
+export type CallbackParameters = {
+  tooltip: Tooltip;
+  options: Options;
+};
+
 export type MarkerCallback = (
   marker: Marker,
   markerObject: Object3D,
   event: PointerEvent,
-  params: { tooltip: Tooltip; options: Options },
+  params: CallbackParameters,
 ) => void;
 
 export type MinMaxPair = [number, number];
@@ -217,7 +225,10 @@ export interface Props {
   /** Callback to handle touch events of a marker.  Captures the touched marker, ThreeJS object and pointer event. */
   onTouchMarker?: MarkerCallback;
   /** Callback to handle defocus events (i.e. clicking the globe after a focus has been applied).  Captures the previously focused coordinates. */
-  onDefocus?: (previousFocus: Coordinates) => void;
+  onDefocus?: (
+    previousFocus: Coordinates,
+    parameters: CallbackParameters,
+  ) => void;
   /** Capture the initialized globe instance */
   onGetGlobe?: (globe: Globe) => void;
   /** Callback when globe background texture is successfully loaded. */
