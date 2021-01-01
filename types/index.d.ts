@@ -20,7 +20,7 @@ export interface Callbacks {
   onTouchMarker: MarkerCallback;
   onDefocus: (
     previousFocus: Coordinates | null,
-    parameters: CallbackParameters,
+    globe: Globe,
   ) => void;
   onGlobeBackgroundTextureLoaded: () => void;
   onGlobeCloudsTextureLoaded: () => void;
@@ -93,17 +93,11 @@ export interface Marker {
   color?: string;
 }
 
-export type CallbackParameters = {
-  tooltip: Tooltip;
-  options: Optional<Options>;
-  updateFocus: Globe['updateFocus'];
-};
-
 export type MarkerCallback = (
   marker: Marker,
-  markerObject: Record<string, any>,
+  markerObject: Object3D,
   event: PointerEvent,
-  params: CallbackParameters,
+  globe: Globe,
 ) => void;
 
 export type MinMaxPair = [number, number];
@@ -228,7 +222,7 @@ export interface Props {
   /** Callback to handle defocus events (i.e. clicking the globe after a focus has been applied).  Captures the previously focused coordinates. */
   onDefocus?: (
     previousFocus: Coordinates,
-    parameters: CallbackParameters,
+    globe: Globe,
   ) => void;
   /** Capture the initialized globe instance */
   onGetGlobe?: (globe: Globe) => void;
