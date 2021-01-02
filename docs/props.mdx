@@ -41,7 +41,7 @@ interface Props {
   /** Callback to handle touch events of a marker.  Captures the touched marker, ThreeJS object and pointer event. */
   onTouchMarker?: MarkerCallback;
   /** Callback to handle defocus events (i.e. clicking the globe after a focus has been applied).  Captures the previously focused coordinates. */
-  onDefocus?: (previousFocus: Coordinates) => void;
+  onDefocus?: (previousFocus: Coordinates, shouldDefocus: boolean) => void;
   /** Capture the initialized globe instance */
   onGetGlobe?: (globe: Globe) => void;
   /** Callback when globe background texture is successfully loaded. */

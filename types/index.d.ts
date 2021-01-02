@@ -15,14 +15,24 @@ export interface Animation {
 }
 
 export interface Callbacks {
-  onClickMarker: MarkerCallback;
-  onTouchMarker: MarkerCallback;
-  onDefocus: (previousFocus: Coordinates | null) => void;
-  onGlobeBackgroundTextureLoaded: () => void;
-  onGlobeCloudsTextureLoaded: () => void;
-  onGlobeTextureLoaded: () => void;
-  onMouseOutMarker: MarkerCallback;
-  onMouseOverMarker: MarkerCallback;
+  /** Callback to handle click events of a marker.  Captures the clicked marker, ThreeJS object and pointer event. */
+  onClickMarker?: MarkerCallback;
+  /** Callback to handle touch events of a marker.  Captures the touched marker, ThreeJS object and pointer event. */
+  onTouchMarker?: MarkerCallback;
+  /** Callback to handle defocus events (i.e. clicking the globe after a focus has been applied).  Captures the previously focused coordinates. */
+  onDefocus?: (previousFocus: Coordinates, shouldDefocus: boolean) => void;
+  /** Capture the initialized globe instance */
+  onGetGlobe?: (globe: Globe) => void;
+  /** Callback when globe background texture is successfully loaded. */
+  onGlobeBackgroundTextureLoaded?: () => void;
+  /** Callback when globe clouds texture is successfully loaded. */
+  onGlobeCloudsTextureLoaded?: () => void;
+  /** Callback when globe texture is successfully loaded. */
+  onGlobeTextureLoaded?: () => void;
+  /** Callback to handle mouseout events of a marker.  Captures the previously hovered marker, ThreeJS object and pointer event. */
+  onMouseOutMarker?: MarkerCallback;
+  /** Callback to handle mouseover events of a marker.  Captures the hovered marker, ThreeJS object and pointer event. */
+  onMouseOverMarker?: MarkerCallback;
 }
 
 export type Coordinates = [number, number];
@@ -187,7 +197,7 @@ export type Position = [number, number, number];
 /**
  * Globe / Component
  */
-export interface Props {
+export interface BaseProps {
   /** Apply an array of animation steps to sequentially animate the globe. */
   animations?: Animation[];
   /** A set of [lat, lon] coordinates to be focused on. */
@@ -210,25 +220,9 @@ export interface Props {
   options?: Optional<Options>;
   /** Width of globe (e.g. 100vw, 100%, 300px 400) */
   width?: string | number;
-  /** Callback to handle click events of a marker.  Captures the clicked marker, ThreeJS object and pointer event. */
-  onClickMarker?: MarkerCallback;
-  /** Callback to handle touch events of a marker.  Captures the touched marker, ThreeJS object and pointer event. */
-  onTouchMarker?: MarkerCallback;
-  /** Callback to handle defocus events (i.e. clicking the globe after a focus has been applied).  Captures the previously focused coordinates. */
-  onDefocus?: (previousFocus: Coordinates) => void;
-  /** Capture the initialized globe instance */
-  onGetGlobe?: (globe: Globe) => void;
-  /** Callback when globe background texture is successfully loaded. */
-  onGlobeBackgroundTextureLoaded?: () => void;
-  /** Callback when globe clouds texture is successfully loaded. */
-  onGlobeCloudsTextureLoaded?: () => void;
-  /** Callback when globe texture is successfully loaded. */
-  onGlobeTextureLoaded?: () => void;
-  /** Callback to handle mouseout events of a marker.  Captures the previously hovered marker, ThreeJS object and pointer event. */
-  onMouseOutMarker?: MarkerCallback;
-  /** Callback to handle mouseover events of a marker.  Captures the hovered marker, ThreeJS object and pointer event. */
-  onMouseOverMarker?: MarkerCallback;
 }
+
+export interface Props extends BaseProps, Callbacks {}
 
 export default function ReactGlobe(props: Props): JSX.Element;
 

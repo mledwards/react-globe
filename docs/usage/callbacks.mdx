@@ -39,7 +39,7 @@ import ReactGlobe from './react-globe';
       setDetails(`City: ${marker.city} (Sales: ${marker.value}.0M)`);
     }
 
-    function onDefocus(previousCoordinates) {
+    function onDefocus(previousCoordinates, _shouldDefocus) {
       setEvent({
         type: 'DEFOCUS',
         previousCoordinates,

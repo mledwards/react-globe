@@ -11,6 +11,11 @@ Small enhancement.
 - Make tippy custom theme available by setting up a theme called "custom"
 - Make callbacks fully customizable
 
+### Breaking Changes
+
+The `OnDefocus` callback is now called every time a defocus is fired and not only conditionally,
+but a new `shouldDefocus` is provided as argument to quick-fix this and the default behavior didn't change.
+
 ## [5.0.2](https://github.com/chrisrzhou/react-globe/compare/v5.0.2...v5.0.1) (2020-08-08)
 
 Various bugfixes.
