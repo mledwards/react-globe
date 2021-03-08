@@ -32,7 +32,7 @@ export default {
     'FAQ',
     'Changelog',
   ],
-  modifyBundlerConfig: bundlerConfig => {
+  modifyBundlerConfig: (bundlerConfig) => {
     const rules = [
       {
         test: /\.css$/,
